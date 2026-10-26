@@ -8,7 +8,10 @@ import path from "node:path";
  * The SQL in supabase/migrations is plain Postgres, so the same schema runs on Supabase.
  */
 
-export const DATA_DIR = path.resolve(/*turbopackIgnore: true*/ process.cwd(), process.env.DEPOSITFLOW_DATA_DIR ?? ".data");
+export const DATA_DIR = path.resolve(
+  /*turbopackIgnore: true*/ process.cwd(),
+  process.env.DEPOSITFLOW_DATA_DIR ?? (process.env.VERCEL ? "/tmp/.data" : ".data")
+);
 
 type Runner = Pick<PGlite, "query"> | Transaction;
 type G = typeof globalThis & { __df_db?: Promise<PGlite> };
