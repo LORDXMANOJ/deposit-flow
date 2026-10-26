@@ -1,0 +1,11 @@
+node_modules
+.next
+.data
+.env
+.env.local
+*.tsbuildinfo
+next-env.d.ts
+.playwright-mcp/
+*.log
+.DS_Store
+Thumbs.db
